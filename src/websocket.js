@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 module.exports.WebSocket = function() {
 	var WebSocketClient = require('websocket').w3cwebsocket;
 	var client = new WebSocketClient('ws://devify-temperature.azurewebsites.net/object/12345/viewer');
@@ -8,7 +10,9 @@ module.exports.WebSocket = function() {
 
 	client.onmessage = function(e) {
 	    if (typeof e.data === 'string') {
-	        console.log("Received: '" + e.data + "'");
+	    	var o = JSON.parse(e.data);
+	        
+	        $('#text').html(o.temperature);
 	    }
 	};	
 };
