@@ -1,18 +1,15 @@
-# UI-Moving-Line
+# isomorphic-js
+
+A simple project template for developing isomorphic JavaScript application (Browserify).
+
+## Introduction
+
+See:
+
+* [src/index.js](src/index.js)
+* [WebSocket Client in Browser](https://tonicdev.com/jollen/56ecb25484ccdd11001ee412)
 
 ## Usage
-
-The URL format is as ```index.html#<DeviceID>/<Endpoint>/<Y-Axis-Key>```.
-
-Examples:
-
-* ```index.html#testman/wot.city/temperature``` is for testing, try it!
-* ```index.html#f837aab/devify.azurewebsites.net/quality```
- * **f837aab** is the device ID
- * **devify.azurewebsites.net** is the endpoint server
- * **quality** is the key of the air quality value sent from the ESP8266 device
-
-## Developer
 
 If you need to modify the source code, please run ```$ npm install``` to install dependencies before editing the code.
 
@@ -22,7 +19,12 @@ Please open the main file ```src/index.js``` and modify the code. When finish it
 $ gulp apps
 ```
 
-The output file is ```dist/index.js```.
+The output file is ```dist/index.js```. 
+
+More gulp tasks:
+
+* ```gulp watch``` for watching file changes
+* ```gulp browser``` for opening ```dist/index.html``` in a browser and sync with browser
 
 ## License
 
