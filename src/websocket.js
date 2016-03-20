@@ -3,6 +3,7 @@
 var $ = require('jquery');
 require('jsrender')($);
 var WebSocketClient = require('websocket').w3cwebsocket;
+var moment = require('moment');
 
 module.exports.WebSocket = function() {
 	var self = this;
@@ -28,7 +29,8 @@ module.exports.WebSocket = function() {
 	    	var messages = [{
 	    		message: o.message,
 	    		username: o.username || 'guest',
-	    		styleName: styleName
+	    		styleName: styleName,
+	    		timestamp: moment(o.timestamp).fromNow()
 	    	}];
 
 			var html = tmpl.render(messages);
