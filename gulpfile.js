@@ -76,6 +76,7 @@ gulp.task('browser', function (cb) {
     });
     gulp.watch([
         'dist/index.html',
-        'dist/index.js'
+        'dist/index.js',
+        'dist/*.css'
     ], browserSync.reload);
 });
