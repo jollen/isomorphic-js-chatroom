@@ -4,4 +4,4 @@ var $ = require('jquery');
 $.fn.WebSocket = ws.WebSocket;
 
 // Main application
-$('#text').WebSocket();
+$('.timeline').WebSocket();

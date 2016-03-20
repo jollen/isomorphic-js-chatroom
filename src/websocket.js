@@ -1,6 +1,7 @@
 'use strict';
 
 var $ = require('jquery');
+require('jsrender')($);
 var WebSocketClient = require('websocket').w3cwebsocket;
 
 module.exports.WebSocket = function() {
@@ -14,16 +15,24 @@ module.exports.WebSocket = function() {
 	client.onmessage = function(e) {
 	    if (typeof e.data === 'string') {
 	    	var o = JSON.parse(e.data);
+	    	var styleName = '';
 
-	        if ( 0 + o.temperature >= 50 ) {
-	        	self.removeClass('text-gray');
-	        	self.addClass('text-red');
-	        } else {
-	        	self.removeClass('text-red');
-	        	self.addClass('text-gray');
-	        }
+	    	var tmpl = $.templates("#message-item");
 
-	        self.html(o.temperature);
+	    	if ( !o.message )
+	    		return;
+
+	    	if ( '' + o.username === 'jollen' )
+	    		styleName = 'timeline-inverted';
+
+	    	var messages = [{
+	    		message: o.message,
+	    		username: o.username || 'guest',
+	    		styleName: styleName
+	    	}];
+
+			var html = tmpl.render(messages);
+			self.prepend(html);
 	    }
 	};
 };

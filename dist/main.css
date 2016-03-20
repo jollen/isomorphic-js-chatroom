@@ -136,17 +136,3 @@ padding-left:90px;
 .timeline-body > p + p {
   margin-top: 5px;
 }
-
-/* My Custom */
-#text {
-	font-size: 24px;
-}
-
-.text-red {
-  color: #FF0000;
-}
-
-.text-gray {
-  color: #808080;
-}
-
