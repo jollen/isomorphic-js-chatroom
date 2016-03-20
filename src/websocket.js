@@ -1,9 +1,10 @@
 'use strict';
 
 var $ = require('jquery');
+var WebSocketClient = require('websocket').w3cwebsocket;
 
 module.exports.WebSocket = function() {
-	var WebSocketClient = require('websocket').w3cwebsocket;
+	var self = this;
 	var client = new WebSocketClient('ws://wot.city/object/12345/viewer');
 
 	client.onopen = function() {
@@ -13,16 +14,16 @@ module.exports.WebSocket = function() {
 	client.onmessage = function(e) {
 	    if (typeof e.data === 'string') {
 	    	var o = JSON.parse(e.data);
-	        
+
 	        if ( 0 + o.temperature >= 50 ) {
-	        	$('#text').removeClass('text-gray');
-	        	$('#text').addClass('text-red');
+	        	self.removeClass('text-gray');
+	        	self.addClass('text-red');
 	        } else {
-	        	$('#text').removeClass('text-red');
-	        	$('#text').addClass('text-gray');
+	        	self.removeClass('text-red');
+	        	self.addClass('text-gray');
 	        }
 
-	        $('#text').html(o.temperature);
+	        self.html(o.temperature);
 	    }
-	};	
+	};
 };
