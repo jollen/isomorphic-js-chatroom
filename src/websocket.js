@@ -7,7 +7,7 @@ var moment = require('moment');
 
 module.exports.WebSocket = function() {
 	var self = this;
-	var client = new WebSocketClient('ws://wot.city/object/12345/viewer');
+	var client = new WebSocketClient('ws://localhost:8080/object/12345/viewer');
 	var tmpl = $.templates("#message-item");
 
 	client.onopen = function() {

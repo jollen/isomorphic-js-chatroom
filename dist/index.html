@@ -9,16 +9,19 @@
 
 	<div class="container">
 	    <div class="page-header">
-	        <h1 id="timeline">聊天室 v0.0.2</h1>
-          <p>今日天氣: 
-            <span class="weather-temperature" data-city="Taipei"></span>, 
-
-            <span class="weather-temperature" data-city="Tainan"></span>, 
-
-            <span class="weather-temperature" data-city="Shenzhen"></span>,
-
-            <span class="weather-temperature" data-city="Tokyo"></span>
-          </p>
+        <h1 id="timeline">聊天室 v0.0.3</h1>
+        <p>今日天氣: 
+          <span class="weather-temperature" data-city="Taipei"></span>
+        </p>
+        <form id="input-form" class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">/</div>
+              <input type="text" class="form-control" id="message" placeholder="Message">
+            </div>
+          </div>
+          <button type="submit" id="submit" class="btn btn-primary">Send</button>
+        </form>
 	    </div>
 	    <ul class="timeline">
 	    </ul>

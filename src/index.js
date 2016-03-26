@@ -1,11 +1,29 @@
 var ws = require('./websocket');
 var $ = require('jquery');
-var request = require('request');
 
 $.fn.WebSocket = ws.WebSocket;
 
 // Main application
 $('.timeline').WebSocket();
+
+// Form
+var WebSocketClient = require('websocket').w3cwebsocket;
+var client = new WebSocketClient('ws://localhost:8080/object/12345/send');
+client.onopen = function() {
+    console.log('WebSocket Server Connected');
+};
+
+$('#input-form').find('#submit').click(function(e) {
+    e.preventDefault();
+
+    var message = {
+        message: $(this).parent().find('#message').val(),
+        username: 'jollen',
+        timestamp: new Date()
+    };
+
+    client.send(JSON.stringify(message));
+});
 
 $('.weather-temperature').each(function () {
 	var self = $(this);
