@@ -7,6 +7,7 @@
   "dependencies": {
     "automationjs": "^0.1.3",
     "backbone": "^1.3.2",
+    "browser-request": "^0.3.3",
     "devify-cli": "^1.4.0",
     "html-to-vdom": "^0.3.0",
     "jquery": "^2.2.1",

@@ -1,25 +1,26 @@
-var ws = require('./websocket');
-var $ = require('jquery');
-var request = require('request');
+var request = require('browser-request');
 
-$.fn.WebSocket = ws.WebSocket;
+var options = {
+	method:'POST', 
+	url:'https://gcm-http.googleapis.com/gcm/send',
+	headers: {
+	  'Content-Type': 'application/json',
+	  'Authorization': 'key=<YOUR-KEY>'
+	}
+};
 
-// Main application
-$('.timeline').WebSocket();
+var body = {
+	data: {
+		message: "hello world"
+	},
+	to: '/topic'
+};
 
-$('.weather-temperature').each(function () {
-	var self = $(this);
-	var city = self.data('city');
-	
-	$.when(
-		$.ajax({
-		    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=2ab10d1d7c261f5cb373916cc1cf107f',
-		    type: 'GET'
-		}).done(function(msg) {
-			var tempCelsius = parseInt(msg.main.temp - 273.15);
-		    self.text(tempCelsius + '℃' + ' (' + city +')');
-		})
-	).done(function(e) {
-		return;
-	});
+options.body = JSON.stringify(body);
+
+request(options, function(er, res) {
+  if(!er)
+    return console.log('browser-request got your root path:\n' + res.body);
+ 
+  console.log('err: failed');
 });
